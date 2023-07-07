@@ -49,10 +49,12 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Image.asset("assets/images/splash.gif"),
               SizedBox(height: 100,),
-              Text("WELCOME", style: TextStyle(
-                fontSize: 50, fontWeight: FontWeight.bold
+              Image.asset("assets/images/namastepaw.png"),
 
-              ),)
+              // Text("WELCOME", style: TextStyle(
+              //   fontSize: 50, fontWeight: FontWeight.bold
+
+              // ),)
             ],
           ),
         ),
