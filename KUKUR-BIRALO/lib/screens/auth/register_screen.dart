@@ -81,8 +81,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 children: [
                   Image.asset(
                     "assets/images/logo.png",
-                    height: 100,
-                    width: 100,
+                    height: 200,
+                    width: 200,
                   ),
                   SizedBox(height: 10,),
                   TextFormField(
