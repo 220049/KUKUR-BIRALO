@@ -140,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Row(
               children: [
                 Expanded(child: Container()),
-                Expanded(child: Image.asset("assets/images/logo.png", height: 50, width: 50,)),
+                Expanded(child: Image.asset("assets/images/logo.png", height: 100, width: 100,)),
                 Expanded(
                     child: Align(
                       alignment: Alignment.centerRight,
