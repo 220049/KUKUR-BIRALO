@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "295239658146",
+    "project_id": "j-commerce-c06f8",
+    "storage_bucket": "j-commerce-c06f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295239658146:android:589bc25ce63e429a5a05fb",
+        "android_client_info": {
+          "package_name": "com.example.n_baz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "295239658146-dhaspdttfthlms4rrbuutsuc5bn39tib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBp8DYrjWqwLwilJTDElpIYE8EF1TRw9rQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "295239658146-dhaspdttfthlms4rrbuutsuc5bn39tib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
