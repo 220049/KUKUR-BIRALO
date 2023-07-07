@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   late AuthViewModel _authViewModel;
 
   void checkLogin() async{
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 10));
     // check for user detail first
     try{
       await _authViewModel.checkLogin();
@@ -49,8 +49,9 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Image.asset("assets/images/splash.gif"),
               SizedBox(height: 100,),
-              Text("", style: TextStyle(
-                fontSize: 22
+              Text("WELCOME", style: TextStyle(
+                fontSize: 50, fontWeight: FontWeight.bold
+
               ),)
             ],
           ),
