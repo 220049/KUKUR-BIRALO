@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:n_baz/services/local_notification_service.dart';
@@ -78,13 +80,37 @@ class _AccountScreenState extends State<AccountScreen> {
               }
           ),
           makeSettings(
-              icon: Icon(Icons.delete),
-              title: "Delete Account",
-              subtitle: "Permanently delete account from this application",
-              onTap: (){
-                logout();
-              }
+            icon: Icon(Icons.delete),
+            title: "Delete Account",
+            subtitle: "Permanently delete account from this application",
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text("Delete Account"),
+                    content: Text("Are you sure you want to delete your account?"),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text("Cancel"),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          deleteAccount();
+                          Navigator.of(context).pop();
+                        },
+                        child: Text("Delete"),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
           ),
+
           makeSettings(
               icon: Icon(Icons.android),
               title: "Version",
@@ -121,5 +147,31 @@ class _AccountScreenState extends State<AccountScreen> {
                 ))),
       ),
     );
+  }
+
+  void deleteAccount() async {
+    _ui.loadState(true);
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        // Delete user data from Firestore
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).delete();
+
+        // Delete the user account
+        await user.delete();
+
+        Navigator.of(context).pushReplacementNamed('/login');
+      } else {
+        // User is not authenticated or already logged out
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("User not found or already logged out")),
+        );
+      }
+    } catch (err) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(err.toString())),
+      );
+    }
+    _ui.loadState(false);
   }
 }
