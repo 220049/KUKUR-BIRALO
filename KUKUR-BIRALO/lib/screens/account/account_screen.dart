@@ -102,6 +102,9 @@ class _AccountScreenState extends State<AccountScreen> {
                           deleteAccount();
                           Navigator.of(context).pop();
                         },
+                        style: TextButton.styleFrom(
+                          primary: Colors.red, // Set the text color to red
+                        ),
                         child: Text("Delete"),
                       ),
                     ],
@@ -110,6 +113,7 @@ class _AccountScreenState extends State<AccountScreen> {
               );
             },
           ),
+
 
           makeSettings(
               icon: Icon(Icons.android),
