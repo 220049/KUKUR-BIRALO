@@ -78,4 +78,12 @@ class AuthRepository{
       rethrow;
     }
   }
+  Future<void> updateUserProfile(UserModel updatedUser) async {
+    try {
+      // Update the user's profile in the Firestore collection
+      await userRef.doc(updatedUser.id).set(updatedUser);
+    } catch (error) {
+      throw error;
+    }
+  }
 }

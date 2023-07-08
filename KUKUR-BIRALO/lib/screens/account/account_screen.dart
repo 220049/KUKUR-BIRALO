@@ -63,12 +63,20 @@ class _AccountScreenState extends State<AccountScreen> {
           SizedBox(
             height: 10,
           ),
+          // makeSettings(
+          //     icon: Icon(Icons.sell),
+          //     title: "My Products",
+          //     subtitle: "Get listing of my products",
+          //     onTap: (){
+          //       Navigator.of(context).pushNamed("/my-products");
+          //     }
+          // ),
           makeSettings(
-              icon: Icon(Icons.sell),
-              title: "My Products",
-              subtitle: "Get listing of my products",
+              icon: Icon(Icons.person),
+              title: "My Profile",
+              subtitle: "View and Update profile",
               onTap: (){
-                Navigator.of(context).pushNamed("/my-products");
+                Navigator.of(context).pushNamed("/my-profile");
               }
           ),
           makeSettings(

@@ -65,6 +65,21 @@ class AuthViewModel with ChangeNotifier {
       rethrow;
     }
   }
+  Future<void> updateProfile(UserModel updatedUser) async {
+    try {
+      // Logic to update the user profile in your data source (e.g., API call, database update)
+
+      // Assuming you have a method to update the user profile, such as updateUserProfile() in the AuthRepository
+      await AuthRepository().updateUserProfile(updatedUser);
+
+      // Update the logged-in user object in the ViewModel
+      _loggedInUser = updatedUser;
+
+      notifyListeners();
+    } catch (error) {
+      throw error; // Throw the error to be handled in the UI layer
+    }
+  }
 
   Future<void> logout() async{
     try{
