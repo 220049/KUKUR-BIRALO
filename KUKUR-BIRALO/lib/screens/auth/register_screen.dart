@@ -107,7 +107,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         color: Colors.black,
                         size: 22.0,
                       ),
-                      hintText: 'First Name',
+                      hintText: 'Name',
                       hintStyle:
                       TextStyle(fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
                     ),
@@ -322,11 +322,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
 }
 
 class ValidateSignup{
-  static String? name(String? value){
-    if(value == null || value.isEmpty ){
+  static String? name(String? value) {
+    if (value == null || value.isEmpty) {
       return "Name is required";
     }
+
+    final specialCharactersRegex = RegExp(r"[^a-zA-Z\s]");
+    if (specialCharactersRegex.hasMatch(value)) {
+      return "Name should not contain special characters or numbers";
+    }
+
+    final words = value.split(" ");
+    for (var word in words) {
+      if (word.isNotEmpty && !_startsWithCapitalLetter(word)) {
+        return "Each word should start with a capital letter";
+      }
+      if (word.length > 1 && !_isLowerCase(word.substring(1))) {
+        return "Other letters in each word should be lowercase";
+      }
+    }
+
     return null;
+  }
+
+  static bool _startsWithCapitalLetter(String word) {
+    final firstLetter = word.substring(0, 1);
+    return firstLetter == firstLetter.toUpperCase();
+  }
+
+  static bool _isLowerCase(String word) {
+    return word == word.toLowerCase();
   }
   static String? emailValidate(String? value){
     
@@ -340,19 +365,38 @@ class ValidateSignup{
       }
       return null;
   }
-  static String? phone(String? value){
-    if(value == null || value.isEmpty ){
+  static String? phone(String? value) {
+    if (value == null || value.isEmpty) {
       return "Phone number is required";
     }
+
+    final validNumberRegex = RegExp(r"^9\d{9}$");
+    if (!validNumberRegex.hasMatch(value)) {
+      return "Please enter a valid 10 digit phone number starting with 9";
+    }
+
     return null;
   }
 
-  static String? username(String? value){
-    if(value == null || value.isEmpty ){
+
+  static String? username(String? value) {
+    if (value == null || value.isEmpty) {
       return "Username is required";
     }
+
+    final validUsernameRegex = RegExp(r"^[a-z0-9]+$");
+    if (!validUsernameRegex.hasMatch(value)) {
+      return "Use single word with small letters and numbers only.";
+    }
+
+    if (value.length < 3) {
+      return "Username should have at least 3 letters";
+    }
+
     return null;
   }
+
+
   static String? password(String? value, TextEditingController otherPassword){
     if(value == null || value.isEmpty ){
       return "Password is required";
