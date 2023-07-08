@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:n_baz/screens/dashboard/dashboard.dart';
 import 'package:provider/provider.dart';
 
 import '../../services/local_notification_service.dart';
@@ -28,18 +29,22 @@ class _LoginScreenState extends State<LoginScreen> {
     }
     _ui.loadState(true);
     try {
-      await _authViewModel.login(_emailController.text, _passwordController.text).then((value) {
-
+      await _authViewModel
+          .login(_emailController.text, _passwordController.text)
+          .then((value) {
         NotificationService.display(
           title: "Welcome back",
-          body: "Hello ${_authViewModel.loggedInUser?.name},\n Hope you are having a wonderful day.",
+          body:
+              "Hello ${_authViewModel.loggedInUser?.name},\n Hope you are having a wonderful day.",
         );
         Navigator.of(context).pushReplacementNamed('/dashboard');
       }).catchError((e) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(e.message.toString())));
       });
     } catch (err) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(err.toString())));
     }
     _ui.loadState(false);
   }
@@ -76,10 +81,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     validator: ValidateLogin.emailValidate,
-                    style: const TextStyle(fontFamily: 'WorkSansSemiBold', fontSize: 16.0, color: Colors.black),
+                    style: const TextStyle(
+                        fontFamily: 'WorkSansSemiBold',
+                        fontSize: 16.0,
+                        color: Colors.black),
                     decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                      focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
                       border: InputBorder.none,
                       prefixIcon: Icon(
                         Icons.email,
@@ -87,7 +97,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         size: 22.0,
                       ),
                       hintText: 'Email Address',
-                      hintStyle: TextStyle(fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
+                      hintStyle: TextStyle(
+                          fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
                     ),
                   ),
                   SizedBox(
@@ -97,17 +108,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _passwordController,
                     obscureText: _obscureTextPassword,
                     validator: ValidateLogin.password,
-                    style: const TextStyle(fontFamily: 'WorkSansSemiBold', fontSize: 16.0, color: Colors.black),
+                    style: const TextStyle(
+                        fontFamily: 'WorkSansSemiBold',
+                        fontSize: 16.0,
+                        color: Colors.black),
                     decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                      focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
                       prefixIcon: const Icon(
                         Icons.lock,
                         size: 22.0,
                         color: Colors.black,
                       ),
                       hintText: 'Password',
-                      hintStyle: const TextStyle(fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
+                      hintStyle: const TextStyle(
+                          fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
                       suffixIcon: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -115,7 +132,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                         },
                         child: Icon(
-                          _obscureTextPassword ? Icons.visibility : Icons.visibility_off,
+                          _obscureTextPassword
+                              ? Icons.visibility
+                              : Icons.visibility_off,
                           size: 20.0,
                           color: Colors.black,
                         ),
@@ -143,8 +162,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: double.infinity,
                     child: ElevatedButton(
                         style: ButtonStyle(
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20), side: BorderSide(color: Colors.blue))),
-                          padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(vertical: 20)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      side: BorderSide(color: Colors.blue))),
+                          padding: MaterialStateProperty.all<EdgeInsets>(
+                              EdgeInsets.symmetric(vertical: 20)),
                         ),
                         onPressed: () {
                           login();
@@ -154,6 +178,34 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: TextStyle(fontSize: 20),
                         )),
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          side: BorderSide(color: Colors.blue),
+                        ),
+                      ),
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                        EdgeInsets.symmetric(vertical: 20),
+                      ),
+                    ),
+                    onPressed: () {
+                      adminLogin(); // Call the adminLogin method when the button is pressed
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Admin Login",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),
+
                   SizedBox(
                     height: 20,
                   ),
@@ -181,6 +233,32 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void adminLogin() async {
+    // Check if the entered email and password match the admin credentials
+    if (_emailController.text == 'mstacezro@gmail.com' &&
+        _passwordController.text == 'masterpassword') {
+      _ui.loadState(true);
+      try {
+        // Perform the admin login logic here
+        // You can add your own implementation or navigate to the admin dashboard directly
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => DashboardScreen(),
+        ));
+      } catch (err) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(err.toString())),
+        );
+      }
+      _ui.loadState(false);
+    } else {
+      // The entered credentials are not for the admin
+      // You can show an error message or perform any other action
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Invalid admin credentials")),
+      );
+    }
   }
 }
 

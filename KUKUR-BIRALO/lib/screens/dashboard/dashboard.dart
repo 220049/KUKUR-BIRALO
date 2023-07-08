@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:n_baz/screens/account/account_screen.dart';
-import 'package:n_baz/screens/home/home_screen.dart';
+import 'package:n_baz/screens/account/customer_account_screen.dart';
+import 'package:n_baz/screens/home/admin_home_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../viewmodels/auth_viewmodel.dart';
