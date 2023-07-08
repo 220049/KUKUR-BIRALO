@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:n_baz/screens/account/profile_screen.dart';
+import 'package:n_baz/screens/auth/change_password.dart';
 import 'package:n_baz/screens/auth/forget_password_screen.dart';
 import 'package:n_baz/screens/auth/login_screen.dart';
 import 'package:n_baz/screens/auth/register_screen.dart';
@@ -83,6 +84,7 @@ class MyApp extends StatelessWidget {
                 "/single-category": (BuildContext context)=>SingleCategoryScreen(),
                 "/my-products": (BuildContext context)=>MyProductScreen(),
                 "/my-profile": (BuildContext context)=>ProfileScreen(),
+                // '/change-password': (context) => ChangePasswordScreen(),
               },
             );
           }

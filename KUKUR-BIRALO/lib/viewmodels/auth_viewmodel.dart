@@ -81,6 +81,17 @@ class AuthViewModel with ChangeNotifier {
     }
   }
 
+  // Future<bool> updatePassword(String newPassword) async {
+  //   try {
+  //     await _firebaseAuth.currentUser!.updatePassword(newPassword);
+  //     return true; // Password update successful
+  //   } catch (e) {
+  //     print(e.toString());
+  //     return false; // Password update failed
+  //   }
+  // }
+
+
   Future<void> logout() async{
     try{
       await AuthRepository().logout();

@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   late AuthViewModel _authViewModel;
 
   void checkLogin() async{
-    await Future.delayed(Duration(seconds: 10));
+    await Future.delayed(Duration(seconds: 8));
     // check for user detail first
     try{
       await _authViewModel.checkLogin();

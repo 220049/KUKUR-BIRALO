@@ -46,16 +46,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
     _ui.loadState(true);
     try {
-      await _authViewModel.updateProfile(
-        UserModel(
-          name: _nameController.text,
-          phone: _phoneNumberController.text,
-          username: _usernameController.text,
-        ),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Profile updated successfully')),
-      );
+      final currentUser = _authViewModel.loggedInUser;
+      if (currentUser != null) {
+        currentUser.name = _nameController.text;
+        currentUser.phone = _phoneNumberController.text;
+        currentUser.username = _usernameController.text;
+
+        await _authViewModel.updateProfile(currentUser);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Profile updated successfully')),
+        );
+      }
     } catch (err) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(err.toString())),
@@ -63,6 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
     _ui.loadState(false);
   }
+
 
   final _formKey = GlobalKey<FormState>();
 
@@ -157,6 +159,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   style: TextStyle(fontSize: 20),
                 ),
               ),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/change-password');
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.green,
+                  onPrimary: Colors.white,
+                ),
+                child: const Text(
+                  'Update Password',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
             ],
           ),
         ),
@@ -227,4 +243,5 @@ class ValidateSignup {
 
     return null;
   }
+
 }
