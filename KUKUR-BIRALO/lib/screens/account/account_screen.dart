@@ -78,6 +78,14 @@ class _AccountScreenState extends State<AccountScreen> {
               }
           ),
           makeSettings(
+              icon: Icon(Icons.delete),
+              title: "Delete Account",
+              subtitle: "Permanently delete account from this application",
+              onTap: (){
+                logout();
+              }
+          ),
+          makeSettings(
               icon: Icon(Icons.android),
               title: "Version",
               subtitle: "0.0.1",
