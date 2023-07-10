@@ -82,7 +82,7 @@ class _AccountScreenState extends State<AccountScreen> {
               title: "Logout",
               subtitle: "Logout from this application",
               onTap: (){
-                logout();
+                Navigator.of(context).pushNamed("/login");
               }
           ),
           makeSettings(
