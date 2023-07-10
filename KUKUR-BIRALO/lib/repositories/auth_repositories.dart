@@ -26,7 +26,7 @@ class AuthRepository{
       user.userId = uc.user!.uid;
       user.fcm = "";
       // insert into firestore user table
-      await userRef.add(user);
+      await userRef.doc(uc.user!.uid).set(user);
       return uc;
     } catch (err) {
       rethrow;
@@ -81,7 +81,7 @@ class AuthRepository{
   Future<void> updateUserProfile(UserModel updatedUser) async {
     try {
       // Update the user's profile in the Firestore collection
-      await userRef.doc(updatedUser.id).set(updatedUser);
+      await userRef.doc(FirebaseService.firebaseAuth.currentUser!.uid ).set(updatedUser);
     } catch (error) {
       throw error;
     }

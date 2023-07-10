@@ -78,13 +78,14 @@ class MyApp extends StatelessWidget {
                 "/register": (BuildContext context)=>RegisterScreen(),
                 "/forget-password": (BuildContext context)=>ForgetPasswordScreen(),
                 "/dashboard": (BuildContext context)=>DashboardScreen(),
+                // "/admindashboard": (BuildContext context)=>AdminDashboardScreen(),
                 "/add-product": (BuildContext context)=>AddProductScreen(),
                 "/edit-product": (BuildContext context)=>EditProductScreen(),
                 "/single-product": (BuildContext context)=>SingleProductScreen(),
                 "/single-category": (BuildContext context)=>SingleCategoryScreen(),
                 "/my-products": (BuildContext context)=>MyProductScreen(),
                 "/my-profile": (BuildContext context)=>ProfileScreen(),
-                // '/change-password': (context) => ChangePasswordScreen(),
+                '/change-password': (context) => ChangePasswordScreen(),
               },
             );
           }
