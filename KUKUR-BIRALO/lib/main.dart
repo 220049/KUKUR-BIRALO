@@ -86,6 +86,7 @@ class MyApp extends StatelessWidget {
                 "/my-products": (BuildContext context)=>MyProductScreen(),
                 "/my-profile": (BuildContext context)=>ProfileScreen(),
                 '/change-password': (context) => ChangePasswordScreen(),
+
               },
             );
           }

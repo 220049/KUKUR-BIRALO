@@ -6,14 +6,14 @@ import 'package:provider/provider.dart';
 import '../../viewmodels/auth_viewmodel.dart';
 import '../../viewmodels/global_ui_viewmodel.dart';
 
-class AccountScreen extends StatefulWidget {
-  const AccountScreen({Key? key}) : super(key: key);
+class AdminAccountScreen extends StatefulWidget {
+  const AdminAccountScreen({Key? key}) : super(key: key);
 
   @override
-  State<AccountScreen> createState() => _AccountScreenState();
+  State<AdminAccountScreen> createState() => _AdminAccountScreenState();
 }
 
-class _AccountScreenState extends State<AccountScreen> {
+class _AdminAccountScreenState extends State<AdminAccountScreen> {
 
   void logout() async{
     _ui.loadState(true);
