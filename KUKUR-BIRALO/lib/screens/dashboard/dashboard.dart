@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:n_baz/screens/account/account_screen.dart';
+import 'package:n_baz/screens/account/admin_account_screen.dart';
 import 'package:n_baz/screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -69,9 +70,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: SafeArea(
         child: PageView(
           controller: pageController,
-          children: <Widget>[HomeScreen(), FavoriteScreen(), AccountScreen()],
           onPageChanged: _onPageChanged,
           physics: const NeverScrollableScrollPhysics(),
+          children: <Widget>[HomeScreen(), FavoriteScreen(), _authViewModel.loggedInUser?.email == "mstacezro@gmail.com" ? AdminAccountScreen() : AccountScreen()],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
