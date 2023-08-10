@@ -38,7 +38,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
 
   late GlobalUIViewModel _ui;
-  late AuthViewModel _authViewModel;
+  AuthViewModel? _authViewModel;
   late CategoryViewModel _categoryViewModel;
   late ProductViewModel _productViewModel;
   @override
@@ -57,8 +57,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     try{
       _categoryViewModel.getCategories();
       _productViewModel.getProducts();
-      _authViewModel.getFavoritesUser();
-      _authViewModel.getMyProducts();
+      _authViewModel?.getFavoritesUser();
+      _authViewModel?.getMyProducts();
     }catch(e){
       print(e);
     }
@@ -72,7 +72,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           controller: pageController,
           onPageChanged: _onPageChanged,
           physics: const NeverScrollableScrollPhysics(),
-          children: <Widget>[HomeScreen(), FavoriteScreen(), _authViewModel.loggedInUser?.email == "mstacezro@gmail.com" ? AdminAccountScreen() : AccountScreen()],
+          children: <Widget>[HomeScreen(), FavoriteScreen(), _authViewModel?.loggedInUser?.email == "mstacezro@gmail.com" ? AdminAccountScreen() : AccountScreen()],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

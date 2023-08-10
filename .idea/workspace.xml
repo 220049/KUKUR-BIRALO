@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60f60666-50c7-495a-8230-fc8ca2e85217" name="Changes" comment="" />
+    <list default="true" id="60f60666-50c7-495a-8230-fc8ca2e85217" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/MOBILE-ecomerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MOBILE-ecomerce.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KUKUR-BIRALO/lib/screens/dashboard/dashboard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/KUKUR-BIRALO/lib/screens/dashboard/dashboard.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2SET25F5MCymdEM7KX7zRnJDyiZ" />
   <component name="ProjectViewState">
@@ -22,7 +29,7 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "C:/Users/mstac/OneDrive - Softwarica College/Desktop/MOBILE/MOBILE-ecomerce",
+    "last_opened_file_path": "C:/Users/mstac/OneDrive - Softwarica College/Softwarica 32 A/SOFTWARICA/S3/Mobile Application Development- Albert Maharjan/MOBILE-flutter-kukur-biralo/KUKUR-BIRALO",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
@@ -36,5 +43,16 @@
       <updated>1688710529295</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
